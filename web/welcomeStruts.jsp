@@ -12,6 +12,15 @@
         <html:base/>
     </head>
     <body style="background-color: white">
+        <h1>
+            <bean:message key="mensaje.bienvenida"/>
+        </h1>
+        <h2>
+            <bean:message key="mensaje.usuario"/>
+        </h2>
+        <h3>
+            <bean:message key="mensaje.descripcion"/>
+        </h3>
         
         <logic:notPresent name="org.apache.struts.action.MESSAGE" scope="application">
             <div  style="color: red">

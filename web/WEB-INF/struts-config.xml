@@ -7,7 +7,52 @@
 
 <struts-config>
     <form-beans>
-    
+        <form-bean name="Form01VistaController"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="respuesta" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form02SumarNumeros"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="num1" type="java.lang.String"/>
+            <form-property name="num2" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form03TablaMultiplicar"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="numero" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form04Collatz"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="numero" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form05Persona" type="forms.Form05Persona"/>
+        <form-bean name="Form06Departamentos"
+                   type="org.apache.struts.action.DynaActionForm"/>
+        
+        <form-bean name="Form07BuscarDepartamentos"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="id" type="java.lang.String"/>
+        </form-bean>
+        
+        <form-bean name="Form08InsertarDepartamentos" type="forms.Form08InsertarDepartamentos"/>
+        <form-bean name="Form13EliminarDepartamento" 
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="deptno" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form16EliminarEnfermo" 
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="inscripcion" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form17EmpleadosDetallesCombo"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="empno" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form18EmpleadosOficiosCombo"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="oficio" type="java.lang.String"/>
+            <form-property name="incremento" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="Form20SeleccionMultipleOficios" type="forms.Form20SeleccionMultipleOficios"/>
+        <form-bean name="Form19SeleccionMultipleDepartamentos" type="forms.Form19SeleccionMultipleDepartamentos"/>
     </form-beans>
     
     <global-exceptions>
@@ -15,10 +60,96 @@
     </global-exceptions>
 
     <global-forwards>
+        <forward name="web20seleccionmultipleoficios" path="/web20seleccionmultipleoficios.jsp"/>
+        <forward name="web19seleccionmultipledepartamentos" path="/web19seleccionmultipledepartamentos.jsp"/>
+        <forward name="respuestacorrecta" path="/web01respuestacorrecta.jsp"/>
         <forward name="welcome"  path="/Welcome.do"/>
+        <forward name="buscardepartamentos" path="/web07buscardepartamentos.jsp"/>
+        <forward name="insertado" path="/web06departamentos.jsp"/>
+        <forward name="detallesdepartamento" path="/web09detallesdepartamento.jsp"/>
+        <forward name="empleadosoficio" path="/web10empleadosoficio.jsp"/>
+        <forward name="menuoficiosdinamicos" path="/web11menuoficiosdinamicos.jsp"/>
+        <forward name="menudepartamentos" path="/web12menudinamicodepartamentos.jsp"/>
+        <forward name="web13eliminar" path="/web13eliminardepartamento.jsp"/>
+        <forward name="listaempleados" path="/web14empleados.jsp"/>
+        <forward name="detallesempleado" path="/web14empleadodetalles.jsp"/>
+        <forward name="web16eliminarenfermos" path="/web16eliminarenfermos.jsp"/>
+        <forward name="web17empleadosdetallescombo" path="/web17empleadosdetallescombo.jsp"/>
+        <forward name="web18empleadosoficioscombo" path="/web18empleadosoficioscombo.jsp"/>
     </global-forwards>
 
     <action-mappings>
+        <action input="/" name="Form20SeleccionMultipleOficios" path="/Action20SeleccionMultipleOficios" scope="session" type="controllers.Action20SeleccionMultipleOficios"/>
+        <action path="/Action19SeleccionMultipleDepartamentos" 
+                type="controllers.Action19SeleccionMultipleDepartamentos"
+                name="Form19SeleccionMultipleDepartamentos"
+                scope="request"/>
+        <action path="/Action18EmpleadosOficiosCombo" 
+                type="controllers.Action18EmpleadosOficiosCombo"
+                name="Form18EmpleadosOficiosCombo"/>
+        <action path="/Action17DetallesEmpleadosCombo" 
+                type="controllers.Action17DetallesEmpleadosCombo"
+                name="Form17EmpleadosDetallesCombo"
+                scope="request"/>
+        <action path="/Action16EliminarEnfermo" 
+                type="controllers.Action16EliminarEnfermo"
+                name="Form16EliminarEnfermo"
+                input="/web16eliminarenfermos.jsp"/>
+        <action path="/Action14DetallesEmpleado" type="controllers.Action14DetallesEmpleado"/>
+        <action path="/Action14ListaEmpleados" type="controllers.Action14ListaEmpleados"/>
+        <action path="/Action13EliminarDepartamento" 
+                type="controllers.Action13EliminarDepartamento"
+                scope="request"
+                name="Form13EliminarDepartamento"/>     
+    <action path="/Action12MenuDinamicoDepartamentos" type="controllers.Action12MenuDinamicoDepartamentos"/>
+        <action path="/Action11MenuOficiosDinamicos" type="controllers.Action11MenuOficiosDinamicos"/>
+        <action path="/Action10EmpleadosOficio" 
+                type="controllers.Action10EmpleadosOficio"
+                scope="request"/>
+        <action path="/Action09DetallesDepartamento" 
+                type="controllers.Action09DetallesDepartamento"
+                scope="request"/>
+        <action path="/Action08InsertarDepartamentos" 
+                type="controllers.Action08InsertarDepartamentos"
+                name="Form08InsertarDepartamentos"
+                scope="request"
+                input="/web08insertardepartamento.jsp"/>
+        <action path="/Action07BuscarDepartamentos" 
+                type="controllers.Action07BuscarDepartamentos"
+                name="Form07BuscarDepartamentos"
+                scope="request"/>
+        <action path="/Action06Departamentos" 
+                type="controllers.Action06Departamentos"
+                name="Form06Departamentos"
+                scope="request"
+                input="/web06departamentos.jsp"/>
+        
+        <action input="/web05persona.jsp" name="Form05Persona" path="/Action05Persona" scope="request" type="controllers.Action05Persona"/>
+        
+        <action path="/Action04Collatz" 
+                type="controllers.Action04Collatz"
+                name="Form04Collatz"
+                scope="request"
+                input="/web04collatz.jsp"/>
+        
+        <action path="/Action03TablaMultiplicar" 
+                type="controllers.Action03TablaMultiplicar"
+                name="Form03TablaMultiplicar"
+                scope="request"
+                input="/web03tablamultiplicar.jsp"/>
+        
+        <action path="/Action02SumarNumeros" 
+                type="controllers.Action02SumarNumeros"
+                name="Form02SumarNumeros"
+                scope="request"
+                input="/web02sumarnumeros.jsp"/>
+        
+        <action path="/Action01VistaController" 
+                type="controllers.Action01VistaController"
+                name="Form01VistaController"
+                scope="request"
+                input="/web01pregunta.jsp"/> 
+          
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
     
@@ -53,11 +184,14 @@
 
     Paths found in Tiles definitions are relative to the main context.
     -->
+    <plug-in className="plugins.PlugInDepartamentos"></plug-in>
+    <plug-in className="plugins.PlugInEnfermos"></plug-in>
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
         <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
         <set-property property="moduleAware" value="true" />
     </plug-in>
-    
+    <plug-in className="plugins.PlugInEmpleados"></plug-in>
+    <plug-in className="plugins.PlugInEmpleadosOficiosCombo"></plug-in>
     <!-- ========================= Validator plugin ================================= -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property
